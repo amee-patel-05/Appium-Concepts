@@ -35,7 +35,7 @@ public class BaseClass {
 
         // create capabilities
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 8 Pro");
+        options.setDeviceName("Pixel 12 Pro");
 
 //        options.setApp(fs.getAbsolutePath());
         //options.setAdbPort(8210);
