@@ -8,6 +8,9 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 //import org.openqa.selenium.remote.CapabilityType;
 //import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -15,6 +18,8 @@ import java.lang.reflect.Member;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseClass {
     public AndroidDriver a;
@@ -22,6 +27,10 @@ public class BaseClass {
 
     @Test
     public void configureAppium() throws MalformedURLException {
+
+        Map<String, String> env=new HashMap<String, String>(System.getenv());
+        env.put("ANDROID_HOME","C:\\Users\\ameep\\AppData\\Local\\Android\\Sdk");
+        env.put("JAVA_HOME","C:\\Program Files\\Java\\jdk-21");
 
         File file = new File("C:\\Users\\ameep\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
 
@@ -35,29 +44,35 @@ public class BaseClass {
 
         // create capabilities
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 12 Pro");
+        options.setDeviceName("Pixel 8 Pro");
 
-//        options.setApp(fs.getAbsolutePath());
-        //options.setAdbPort(8210);
+        // options.setApp(fs.getAbsolutePath());
+        // options.setAdbPort(8210);
 
         options.setApp(System.getProperty("user.dir")+"\\src\\test\\java\\resources\\ApiDemos-debug.apk");
         System.out.println(System.getProperty("user.dir"));
 
         options.setAutomationName("UIAutomator2");
         options.setPlatformName("ANDROID");
+        options.setCapability("platformVersion","10.0");
 
         // create object for AndroidDriver/IOSDriver
         URL url = new URL("http://127.0.0.1:4723");
 
-        // Object Locators : xpath, id, className, accessibilityId, androidUIautomator
-        a.findElement(AppiumBy.accessibilityId(""));
-
-
         a = new AndroidDriver(url,options);
         a.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
-        a.quit();
 
+        // Object Locators : xpath, id, className, accessibilityId, androidUIautomator
+        // a.findElement(AppiumBy.accessibilityId(""));
+
+    }
+
+    @AfterTest
+    public void tearDown(){
+
+        a.quit();
         service.stop();
+
     }
 }
 
