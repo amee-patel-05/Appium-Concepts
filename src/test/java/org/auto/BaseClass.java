@@ -25,7 +25,7 @@ public class BaseClass {
     public AndroidDriver a;
     public AppiumDriverLocalService service;
 
-    @Test
+    @BeforeTest
     public void configureAppium() throws MalformedURLException {
 
         Map<String, String> env=new HashMap<String, String>(System.getenv());
