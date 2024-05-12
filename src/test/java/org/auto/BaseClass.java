@@ -1,5 +1,6 @@
 package org.auto;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -8,6 +9,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 //import org.openqa.selenium.remote.CapabilityType;
 //import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -66,6 +68,29 @@ public class BaseClass {
         // a.findElement(AppiumBy.accessibilityId(""));
 
     }
+
+    // Use this method in Scroll.java file to scroll at the end of the page
+//    public void scrollToEnd() throws InterruptedException {
+//        boolean scroll;
+//        do {
+//            JavascriptExecutor js = (JavascriptExecutor) a;
+//
+//            scroll = (Boolean) js.executeScript("mobile: scrollGesture" , ImmutableMap.of(
+//                    "left", 100, "top", 100, "width", 200, "height", 200,
+//                    "direction", "down",
+//                    "percent", 1.0
+//            ));
+//        }while (scroll);
+//
+//        Thread.sleep(3000);
+//    }
+
+    // Use this method in Scroll.java file to scroll at the element of the page
+//    public void scrollToElement(String element) throws InterruptedException {
+//
+//        a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"element\"));"));
+//        Thread.sleep(5000);
+//    }
 
     @AfterTest
     public void tearDown(){
