@@ -26,7 +26,7 @@ public class Setwifi extends BaseClass {
 //
         a.findElement(By.id("android:id/edit")).sendKeys("no1234");   // Enter the wi-fi name
 
-        a.findElements(AppiumBy.className("android.widget.Button")).get(1).click();  // Click on the ok button
+        a.findElements(AppiumBy.className("android.widget.Button")).get(1).click();  // Click on the ok button  // when more than one name className use with the list elements such as findelements
 
     }
 

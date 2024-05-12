@@ -9,11 +9,11 @@ public class ViewText extends BaseClass{
     @Test
     public void testText(){
 
-        a.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"Views\")")).click();  // Click on the Views menu
+        a.findElement(AppiumBy.androidUIAutomator("new UiSelector().text('Views')")).click();  // Click on the Views menu
 
-        a.findElement(AppiumBy.xpath("//android.widget.TextView[@content-desc=\"Buttons\"]\n")).click();   // Click on the buttons
+        a.findElement(AppiumBy.xpath("//android.widget.TextView[@content-desc='Buttons']\n")).click();   // Click on the buttons
 
-        String normalbtn =a.findElements(AppiumBy.className("android.widget.Button")).get(0).getText();    // Click on the Normal button
+        String normalbtn =a.findElements(AppiumBy.className("android.widget.Button")).get(0).getText();    // Click on the Normal button // when more than one name className use with the list elements such as findelements
 
         Assert.assertEquals(normalbtn, "Normal", "Text details are not matched");
 
