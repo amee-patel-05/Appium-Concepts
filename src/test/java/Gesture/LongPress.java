@@ -25,7 +25,9 @@ public class LongPress extends BaseClass {
 
         JavascriptExecutor js = (JavascriptExecutor) a;    // Javascript Executor for js
 
-        js.executeScript("mobile: longClickGesture", ImmutableMap.of("elementId", ((RemoteWebElement) logpress).getId()), "duration", 1000);    //  long press syntax
+        js.executeScript("mobile: longClickGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement) logpress).getId()),
+                "duration", 1000);    //  long press syntax
 
         WebElement samplemenu = a.findElement(By.id("android:id/title"));       // Webelement of sub menu
 

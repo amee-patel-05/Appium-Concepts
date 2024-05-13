@@ -14,28 +14,34 @@ public class Scroll extends BaseClass {
         a.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"Views\")")).click();     // Click on the Views menu
         Thread.sleep(2000);
 
+
+
         // Scroll until view an element
 
-        //scrollToElement("Popup Menu");
+//        scrollToElement("Popup Menu");    // For common purpose
+
 //        a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Popup Menu\"));"));
 //        Thread.sleep(3000);
 
+
+
+
         // Scroll as long as the app elements
 
-       // scrollToEnd();
-        boolean scroll;
-        do {
-            JavascriptExecutor js = (JavascriptExecutor) a;
+         scrollToEnd();  // For common purpose
 
-           scroll = (Boolean) js.executeScript("mobile: scrollGesture" , ImmutableMap.of(
-                    "left", 100, "top", 100, "width", 200, "height", 200,
-                   "direction", "down",
-                   "percent", 1.0
-            ));
-        }while (scroll);
+//        boolean scroll;
+//        do {
+//            JavascriptExecutor js = (JavascriptExecutor) a;
+//
+//           scroll = (Boolean) js.executeScript("mobile: scrollGesture" , ImmutableMap.of(
+//                    "left", 100, "top", 100, "width", 200, "height", 200,
+//                   "direction", "down",
+//                   "percent", 1.0
+//            ));
+//        }while (scroll);
 
-        Thread.sleep(3000);
-
+//        Thread.sleep(1000);
     }
 
 }
