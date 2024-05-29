@@ -4,11 +4,12 @@ import io.appium.java_client.AppiumBy;
 import org.auto.App;
 import org.auto.BaseClass2;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DropDown extends BaseClass2 {
 
-        @Test
+        @Test(enabled = false)
         public void dropdownTest() throws InterruptedException {
 
             a.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();  // Click on the country drop-down menu
@@ -35,7 +36,31 @@ public class DropDown extends BaseClass2 {
             a.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();   // Click on the Lets shop button
             Thread.sleep(3000);
 
+        }
 
+        @Test
+        public void toastmessageTest() throws InterruptedException {
+
+            a.findElement(By.id("com.androidsample.generalstore:id/spinnerCountry")).click();  // Click on the country drop-down menu
+            Thread.sleep(1000);
+
+            a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Canada\"));"));
+            Thread.sleep(1000);
+
+            a.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"Canada\")")).click();   // Click on the Canada option
+            Thread.sleep(1000);
+
+            a.findElement(By.xpath("//android.widget.RadioButton[@resource-id=\"com.androidsample.generalstore:id/radioFemale\"]")).click();  // Click on the Female radio button
+            Thread.sleep(1000);
+
+            a.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();   // Click on the Lets shop button
+            Thread.sleep(1000);
+
+            // Spy toast message and get the text   tagName = android.widget.Toast  xpath = tagName
+
+            String toastmessage = a.findElement(By.xpath("(android.widget.Toast)[1]")).getAttribute("name");
+
+            Assert.assertEquals(toastmessage, "enter your name", "toast message is not matched");  // Please enter your name
 
 
         }

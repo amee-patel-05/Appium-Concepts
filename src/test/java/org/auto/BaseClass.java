@@ -65,7 +65,7 @@ public class BaseClass {
         URL url = new URL("http://127.0.0.1:4723");
 
         a = new AndroidDriver(url,options);
-        a.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
+        a.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
 
         // Object Locators : xpath, id, className, accessibilityId, androidUIautomator
         // a.findElement(AppiumBy.accessibilityId(""));
@@ -91,11 +91,11 @@ public class BaseClass {
 
     // Use this method in Scroll.java file to scroll at the element of the page
 
-//    public void scrollToElement(String element) throws InterruptedException {
-//
-//        a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"element\"));"));
-//        Thread.sleep(2000);
-//    }
+    public void scrollToElement(String element) throws InterruptedException {
+
+        a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"element\"));"));
+        Thread.sleep(2000);
+    }
 
 
     // Use this method in Swipe.java file for swipe the image of the page

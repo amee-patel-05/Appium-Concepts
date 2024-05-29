@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -39,11 +40,16 @@ public class BaseClass2 {
         options.setDeviceName("Pixel 8 Pro");
 
         options.setApp(System.getProperty("user.dir")+"\\src\\test\\java\\resources\\General-Store.apk");
-        System.out.println(System.getProperty("user.dir"));
+       // System.out.println(System.getProperty("user.dir"));
+        options.setChromedriverExecutable("D:\\Projects\\Automation\\MobileAutomation\\src\\test\\java\\resources\\chromedriver.exe");
+        options.getChromedriverExecutableDir();
+
 
         options.setAutomationName("UIAutomator2");
         options.setPlatformName("ANDROID");
         options.setCapability("platformVersion","10.0");
+//        options.setCapability("browserName", "chrome");
+//        options.setCapability("chromedriverExecutable", System.getProperty("user.dir")+"\\src\\test\\java\\resources\\chromedriver.exe");
 
         // create object for AndroidDriver/IOSDriver
         URL url = new URL("http://127.0.0.1:4723");
@@ -53,13 +59,6 @@ public class BaseClass2 {
 
     }
 
-    // Use this method in Scroll.java file to scroll at the element of the page
-
-//    public void scrollToElement(String element) throws InterruptedException {
-//
-//        a.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"element\"));"));
-//        Thread.sleep(2000);
-//    }
 
     @AfterTest
     public void tearDown(){
